@@ -27,7 +27,7 @@ bot = telebot.TeleBot( config.TOKEN )
 
 app = web.Application()
 
-async def handle(request: web.Request ) -> web.Response:
+async def handle( request: web.Request ) -> web.Response:
     print("handle")
     request_body_dict = await request.json()
     update = telebot.types.Update.de_json(request_body_dict)
@@ -52,13 +52,13 @@ hello_string = "*Test bot* - just a bot.\n\n" \
                "/start - greetings\n" \
                "/help - shows this help"
 
-@bot.message_handler(commands=["start"])
-def send_welcome(message):
-    bot.send_message(message.chat.id, "Hello, I am a bot")
+@bot.message_handler( commands=["start"] )
+def send_welcome( message ):
+    bot.send_message( message.chat.id, "Hello, I am a bot" )
 
-@bot.message_handler(commands=["help"])
-def send_help(message):
-    bot.send_message(message.chat.id, hello_string, parse_mode="Markdown")
+@bot.message_handler( commands=["help"] )
+def send_help( message ):
+    bot.send_message( message.chat.id, hello_string, parse_mode="Markdown" )
 
 context = ssl.SSLContext()
 context.load_cert_chain( config.CERTIFICATE_PATH, config.PRIVATE_KEY_PATH )
