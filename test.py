@@ -48,10 +48,9 @@ app.add_routes([web.get("/", handle),web.post("/", handle2)])
 
 #app.router.add_get("/", handle2)
 
-help_string = []
-help_string.append("*Test bot* - just a bot.\n\n")
-help_string.append("/start - greetings\n")
-help_string.append("/help - shows this help")
+hello_string = "*Test bot* - just a bot.\n\n" \
+               "/start - greetings\n" \
+               "/help - shows this help"
 
 @bot.message_handler(commands=["start"])
 def send_welcome(message):
@@ -59,7 +58,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands=["help"])
 def send_help(message):
-    bot.send_message(message.chat.id, "".join(help_string), parse_mode="Markdown")
+    bot.send_message(message.chat.id, hello_string, parse_mode="Markdown")
 
 context = ssl.SSLContext()
 context.load_cert_chain( config.CERTIFICATE_PATH, config.PRIVATE_KEY_PATH )
