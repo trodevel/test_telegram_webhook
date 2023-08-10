@@ -23,8 +23,6 @@ import telebot
 from aiohttp import web
 import ssl
 
-WEBHOOK_LISTEN = "0.0.0.0"
-
 bot = telebot.TeleBot( config.TOKEN )
 
 app = web.Application()
@@ -68,7 +66,7 @@ context.load_cert_chain( config.CERTIFICATE_PATH, config.PRIVATE_KEY_PATH )
 
 web.run_app(
     app,
-    host=WEBHOOK_LISTEN,
+    host=config.LISTEN_IP,
     port=config.PORT,
     ssl_context=context,
 )
