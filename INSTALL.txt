@@ -1,0 +1,4 @@
+pip3 install pyTelegramBotAPI
+pip3 install aiohttp
+pip3 install cchardet
+pip3 install aiodns
